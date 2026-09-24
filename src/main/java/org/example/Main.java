@@ -1,4 +1,3 @@
-
 package org.example;
 
 import java.util.ArrayList;
@@ -38,6 +37,7 @@ public class Main {
 
                 case 3:
                     System.out.println("Exiting Job Tracker...");
+                    scanner.close();
                     return;
 
                 default:
@@ -46,7 +46,9 @@ public class Main {
         }
     }
 
+    // Add Job Application
     private static void addJob() {
+
         System.out.print("Company Name: ");
         String company = scanner.nextLine();
 
@@ -59,20 +61,32 @@ public class Main {
         System.out.print("Application Status: ");
         String status = scanner.nextLine();
 
+        System.out.print("Applied Date (YYYY-MM-DD): ");
+        String appliedDate = scanner.nextLine();
+
         System.out.print("Resume Submitted? (yes/no): ");
         boolean resumeSubmitted =
                 scanner.nextLine().equalsIgnoreCase("yes");
 
+        // Create Job object
         Job job = new Job(
-                company, title, link, status, resumeSubmitted
+                company,
+                title,
+                link,
+                status,
+                appliedDate,
+                resumeSubmitted
         );
 
+        // Add job to list
         jobs.add(job);
 
-        System.out.println("Job application added successfully!");
+        System.out.println("\nJob application added successfully!");
     }
 
+    // View All Job Applications
     private static void viewJobs() {
+
         if (jobs.isEmpty()) {
             System.out.println("No job applications found.");
             return;
@@ -81,6 +95,7 @@ public class Main {
         System.out.println("\n===== YOUR JOB APPLICATIONS =====");
 
         for (int i = 0; i < jobs.size(); i++) {
+
             Job job = jobs.get(i);
 
             System.out.println("\nApplication #" + (i + 1));
@@ -88,8 +103,11 @@ public class Main {
             System.out.println("Job Title: " + job.getJobTitle());
             System.out.println("Link: " + job.getJobLink());
             System.out.println("Status: " + job.getStatus());
+            System.out.println("Applied Date: " + job.getAppliedDate());
             System.out.println("Resume Submitted: "
                     + (job.isResumeSubmitted() ? "Yes" : "No"));
+
+            System.out.println("----------------------------");
         }
     }
 }
