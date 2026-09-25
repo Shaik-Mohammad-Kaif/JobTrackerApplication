@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         while (true) {
+            System.out.println("TalentHub JobTracker");
             System.out.println("\n===== JOB TRACKER =====");
             System.out.println("1. Add Job Application");
             System.out.println("2. View Job Applications");
@@ -48,6 +49,8 @@ public class Main {
 
     // Add Job Application
     private static void addJob() {
+
+        System.out.println("Please Fill The Details");
 
         System.out.print("Company Name: ");
         String company = scanner.nextLine();
